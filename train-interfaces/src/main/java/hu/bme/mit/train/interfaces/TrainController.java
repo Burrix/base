@@ -10,4 +10,7 @@ public interface TrainController {
 
 	void setJoystickPosition(int joystickPosition);
 
+	public int getSpeedForGivenTime(String time);
+
+	public int getJoystickForGivenTime(String time);
 }

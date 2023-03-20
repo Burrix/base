@@ -1,5 +1,7 @@
 package hu.bme.mit.train.system;
 
+import java.text.SimpleDateFormat;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +16,7 @@ public class TrainSystemTest {
 	TrainController controller;
 	TrainSensor sensor;
 	TrainUser user;
-	
+
 	@Before
 	public void before() {
 		TrainSystem system = new TrainSystem();
@@ -24,13 +26,13 @@ public class TrainSystemTest {
 
 		sensor.overrideSpeedLimit(50);
 	}
-	
+
 	@Test
 	public void OverridingJoystickPosition_IncreasesReferenceSpeed() {
 		sensor.overrideSpeedLimit(10);
 
 		Assert.assertEquals(0, controller.getReferenceSpeed());
-		
+
 		user.overrideJoystickPosition(5);
 
 		controller.followSpeed();
@@ -50,5 +52,13 @@ public class TrainSystemTest {
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
 
-	
+	@Test
+	public void TestTachoGraf() {
+
+		controller.followSpeed();
+		String date = new SimpleDateFormat("yyyy.MM.dd.HH.mm").format(new java.util.Date());
+
+		Assert.assertEquals(0, controller.getJoystickForGivenTime(date));
+	}
+
 }
