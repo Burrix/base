@@ -14,9 +14,6 @@ public class TrainSystem {
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
 
 	public TrainController getController() {
-		float egyik = 2
-		float masik = 0;
-		egyik = egyik / masik;
 		return controller;
 	}
 
